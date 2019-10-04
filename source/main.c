@@ -14,14 +14,33 @@
 
 int main(void) {
     DDRA = 0x00; PORTA = 0xFF;
-    DDRB = 0xFF; PORTB = 0x00;
-
-    unsigned char temp_input = 0x00;
+    DDRC = 0xFF; PORTC = 0x00;
 
     while (1) {
-       temp_input = PINA;
-       PORTB = temp_input;
+       unsigned char cntavail = 0;
 
+       if(PINA & 0x01){
+          cntavail++;
+       }  
+
+       if(PINA & 0x02){
+          cntavail++;
+       }  
+
+       if(PINA & 0x04){
+          cntavail++;
+       }  
+
+       if(PINA & 0x08){
+          cntavail++;
+       }  
+
+       PORTC = (PINC & 0x70) | cntavail;
+
+       if(cntavail == 4){
+          PORTC = PINC | 0x80;
+       }
     }
+
     return 1;
 }
