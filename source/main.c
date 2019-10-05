@@ -17,29 +17,28 @@ int main(void) {
     DDRC = 0xFF; PORTC = 0x00;
 
     while (1) {
-       unsigned char cntavail = 0;
+       unsigned char cntavail = 5;
+       unsigned char temp;
+       temp = PINA;             // Program wouldn't run without this method
+       cntavail--;              // Program wouldn't run without decrementing this variable first
 
-       if(PINA & 0x01){
-          cntavail++;
+       if(temp & 0x01){
+          cntavail--;
        }  
 
-       if(PINA & 0x02){
-          cntavail++;
+       if(temp & 0x02){
+          cntavail--;
        }  
 
-       if(PINA & 0x04){
-          cntavail++;
+       if(temp & 0x04){
+          cntavail--;
        }  
 
-       if(PINA & 0x08){
-          cntavail++;
+       if(temp & 0x08){
+          cntavail--;
        }  
 
-       PORTC = (PINC & 0x70) | cntavail;
-
-       if(cntavail == 4){
-          PORTC = PINC | 0x80;
-       }
+       PORTC = cntavail;
     }
 
     return 1;
