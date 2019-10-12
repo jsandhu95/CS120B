@@ -21,17 +21,23 @@ unsigned char button[4];
 bool flag;
 bool initialized;
 
-int press(int, bool*);
+int deadBolt(int);
 
 int main(void) {
+    unsigned char i;
     DDRA = 0x00; PORTA = 0xFF;
+    DDRB = 0xFF; PORTB = 0x00;
     DDRC = 0xFF; PORTC = 0x00;
 
+    for(i = 0; i < 4; i++){
+       button[i] = 0;
+    }
+
     State state = init;
-    flag = false;
+    PORTC = 0x00;
 
     while (1) {
-       state = press(state, &flag);
+       state = deadBolt(state);
     }
     return 0;
 }
