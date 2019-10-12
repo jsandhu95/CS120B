@@ -1,7 +1,7 @@
 /*	Author: jsand021 - Jeevan Sandhu
  *  Partner(s) Name: No Partner
  *	Lab Section: 23
- *	Assignment: Lab 4  Exercise 4
+ *	Assignment: Lab 4  Exercise 5
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
