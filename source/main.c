@@ -1,7 +1,7 @@
-/*	Author: jsand021
- *  Partner(s) Name: 
- *	Lab Section:
- *	Assignment: Lab #  Exercise #
+/*	Author: jsand021 - Jeevan Sandhu
+ *  Partner(s) Name: No Partner
+ *	Lab Section: 23
+ *	Assignment: Lab 4  Exercise 1
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -12,22 +12,59 @@
 #include "simAVRHeader.h"
 #endif
 
+typedef enum States {r0, p0, r1, p1} State;
+
+int press(int);
+
 int main(void) {
-    DDRD = 0x00; PORTD = 0xFF;
-    DDRB = 0xFE; PORTB = 0x01;
+    DDRA = 0x00; PORTA = 0xFF;
+    DDRB = 0xFF; PORTB = 0x00;
+
+    States state = r0;
+    PORTB = 0x01;
 
     while (1) {
-       short weight = (PIND << 1) | (PINB & 0x01);
-       unsigned char airbag = 0;
-
-       if(weight >= 70){
-          airbag = airbag | 0x02;
-       }
-       else if(weight > 5){
-          airbag = airbag | 0x04;
-       }
-
-       PORTB = airbag; 
+       state = press(state);
     }
     return 0;
+}
+
+int press(int state){
+   static unsigned char b;
+   unsigned char A0 = PINA & 0x01;
+   switch(state){
+      case r0:
+         state = A0 ? p1 : r0;
+         break;
+      case p0:
+         state = A0 ? p0 : r0;
+         break;
+      case r1:
+         state = A0 ? p0 : r1;
+         break;
+      case p1:
+         state = A0 ? p1 : r1;
+         break;
+      default:
+         state = r0;
+         break;
+   }
+   switch(state){
+      case r0:
+         b = 0x01;
+         break;
+      case p0:
+         b = 0x01;
+         break;
+      case r1:
+         b = 0x02;
+         break;
+      case p1:
+         b = 0x02;
+         break;
+      default:
+         break;
+   }
+   PORTB = b;
+   return state:
 }
