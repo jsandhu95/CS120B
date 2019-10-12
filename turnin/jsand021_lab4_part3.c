@@ -1,7 +1,7 @@
 /*	Author: jsand021 - Jeevan Sandhu
  *  Partner(s) Name: No Partner
  *	Lab Section: 23
- *	Assignment: Lab 4  Exercise 4
+ *	Assignment: Lab 4  Exercise 3
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -65,10 +65,10 @@ int deadBolt(int state){
          } 
          break;
       case unlock2:
-         if(A1 && !(A0 || A2 || A7) && !(PORTB & 0x01)){
+         if(A1 && !(A0 || A2 || A7)){
             state = unlock;
          }
-         else if((A7 && !(A0 || A1 || A2)) || (A1 && !(A0 || A2 || A7) && (PORTB & 0x01))){
+         else if(A7 && !(A0 || A1 || A2)){
             state = lock;
          }
          else if((A0 && !(A1 || A2 || A7)) || (A2 && !(A0 || A1 || A7))){
