@@ -1,4 +1,4 @@
-# Test file for Lab4_SMs
+# Test file for Lab3_BitManipulation
 
 
 # commands.gdb provides the following functions for ease:
@@ -27,163 +27,91 @@ echo ======================================================\n
 echo Running all tests..."\n\n
 
 # Example test:
-test "PINA: 0x01, 0x00, 0x01, 0x00 => PORTC: 0x02, state: wait"
+test "PINA: 0x00 => PORTC: 0x40"
 # Set inputs
-setPINA 0x01
-# Continue for several ticks
-continue 5
-#
-setPINA 0x00
-# Continue for several ticks
-continue 5
-#
-setPINA 0x01
-# Continue for several ticks
-continue 5
-#
 setPINA 0x00
 # Continue for several ticks
 continue 5
 # Set expect values
-expectPORTC 0x02
-expect state wait
+expectPORTC 0x40
 # Check pass/fail
 checkResult
 
 # Add tests below
 
 # Example test:
-test "PINA: 0x01 => PORTC: 0x01, state: pA0"
+test "PINA: 0x01 => PORTC: 0x60"
 # Set inputs
 setPINA 0x01
-set state = init
 # Continue for several ticks
 continue 5
 # Set expect values
-expectPORTC 0x01
-expect state pA0
+expectPORTC 0x60
 # Check pass/fail
 checkResult
 
 
 # Example test:
-test "PINA: 0x02, 0x00, 0x02, 0x00, 0x02, 0x00 => PORTC: 0x00, state: wait"
+test "PINA: 0x03 => PORTC: 0x70"
 # Set inputs
-setPINA 0x02
-# Continue for several ticks
-continue 5
-#
-setPINA 0x00
-# Continue for several ticks
-continue 5
-#
-setPINA 0x02
-# Continue for several ticks
-continue 5
-#
-setPINA 0x00
-# Continue for several ticks
-continue 5
-#
-setPINA 0x02
-# Continue for several ticks
-continue 5
-#
-setPINA 0x00
-# Continue for several ticks
-continue 5
-# Set expect values
-expectPORTC 0x00
-expect state wait
-# Check pass/fail
-checkResult
-
-
-# Example test:
-test "PINA: 0x02, 0x00, 0x02, 0x00, 0x01, 0x00 => PORTC: 0x01, state: wait"
-# Set inputs
-setPINA 0x02
-# Continue for several ticks
-continue 5
-#
-setPINA 0x00
-# Continue for several ticks
-continue 5
-#
-setPINA 0x02
-# Continue for several ticks
-continue 5
-#
-setPINA 0x00
-# Continue for several ticks
-continue 5
-#
-setPINA 0x01
-# Continue for several ticks
-continue 5
-#
-setPINA 0x00
-# Continue for several ticks
-continue 5
-# Set expect values
-expectPORTC 0x01
-expect state wait
-# Check pass/fail
-checkResult
-
-
-
-# Example test:
-test "PINA: 0x01, 0x00, 0x01, 0x03 => PORTC: 0x00, state: reset"
-# Set inputs
-set state = init
-setPINA 0x01
-# Continue for several ticks
-continue 5
-#
-setPINA 0x00
-# Continue for several ticks
-continue 5
-#
-setPINA 0x01
-# Continue for several ticks
-continue 5
-#
 setPINA 0x03
 # Continue for several ticks
 continue 5
 # Set expect values
-expectPORTC 0x00
-expect state reset 
+expectPORTC 0x70
 # Check pass/fail
 checkResult
-
 
 
 # Example test:
-test "PINA: 0x03, 0x00, 0x01, 0x00 => PORTC: 0x01, state: wait"
+test "PINA: 0x05 => PORTC: 0x38"
 # Set inputs
-set state = init
-setPINA 0x03
-# Continue for several ticks
-continue 5
-#
-setPINA 0x00
-# Continue for several ticks
-continue 5
-#
-setPINA 0x01
-# Continue for several ticks
-continue 5
-#
-setPINA 0x00
+setPINA 0x05
 # Continue for several ticks
 continue 5
 # Set expect values
-expectPORTC 0x01
-expect state wait 
+expectPORTC 0x38
 # Check pass/fail
 checkResult
+
+
+# Example test:
+test "PINA: 0x07 => PORTC: 0x3C"
+# Set inputs
+setPINA 0x07
+# Continue for several ticks
+continue 5
+# Set expect values
+expectPORTC 0x3C
+# Check pass/fail
+checkResult
+
+
+# Example test:
+test "PINA: 0x0A => PORTC: 0x3E"
+# Set inputs
+setPINA 0x0A
+# Continue for several ticks
+continue 5
+# Set expect values
+expectPORTC 0x3E
+# Check pass/fail
+checkResult
+
+
+# Example test:
+test "PINA: 0x0F => PORTC: 0x3F"
+# Set inputs
+setPINA 0x0F
+# Continue for several ticks
+continue 5
+# Set expect values
+expectPORTC 0x3F
+# Check pass/fail
+checkResult
+
+
+
 
 # Report on how many tests passed/tests ran
 set $passed=$tests-$failed
