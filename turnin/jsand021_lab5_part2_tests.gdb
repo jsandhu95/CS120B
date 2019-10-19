@@ -1,4 +1,4 @@
-# Test file for Lab4_SMs
+# Test file for Lab5_Hardware
 
 
 # commands.gdb provides the following functions for ease:

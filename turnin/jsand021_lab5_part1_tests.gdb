@@ -1,4 +1,4 @@
-# Test file for Lab3_BitManipulation
+# Test file for Lab5_Hardware
 
 
 # commands.gdb provides the following functions for ease:
